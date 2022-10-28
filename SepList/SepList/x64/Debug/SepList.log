@@ -1,0 +1,6 @@
+﻿  SepList.c
+D:\编程学习\data-structure\SepList\SepList\SepList.c(150,15): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  test.c
+  正在生成代码...
+D:\编程学习\data-structure\SepList\SepList\SepList.c(8): warning C4716: “BinarySearch”: 必须返回一个值
+  SepList.vcxproj -> D:\编程学习\data-structure\SepList\x64\Debug\SepList.exe
