@@ -1,2 +1,4 @@
-﻿  test.c
+﻿  SepList.c
+D:\编程学习\data-structure\SepList\SepList\SepList.c(110,27): warning C4028: 形参 2 与声明不同
+D:\编程学习\data-structure\SepList\SepList\SepList.c(135,2): warning C4018: “<”: 有符号/无符号不匹配
   SepList.vcxproj -> D:\编程学习\data-structure\SepList\Debug\SepList.exe
