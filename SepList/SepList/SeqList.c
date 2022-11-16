@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
-#include "SepList.h"
+#include "SeqList.h"
 
 
 void SLInit(SL* ps)
