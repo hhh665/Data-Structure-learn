@@ -39,49 +39,48 @@ void LTPrint(LTNode* phead)
 void LTPushBack(LTNode* phead, LTDataType x)
 {
 	assert(phead);
-	/*LTNode* newnode = BuyListNode(x);
+	LTNode* newnode = BuyListNode(x);
 	LTNode* tail = phead->prev;
 	tail->next = newnode;
 	newnode->prev = tail;
 	newnode->next = phead;
-	phead-> prev = newnode;*/
-	LTInsert(phead, x);
+	phead-> prev = newnode;
+	//LTInsert(phead, x);
 }
 
 void LTPopBack(LTNode* phead)
 {
 	assert(phead);
 	assert(phead->next != phead);
-	/*LTNode* tail = phead->prev;
+	LTNode* tail = phead->prev;
 	LTNode* tailPrev = tail->prev;
 	tailPrev->next = phead;
 	phead->prev = tailPrev;
-	free(tail);*/
-	LTErase(phead->prev);
+	free(tail);
+	//LTErase(phead->prev);
 }
 
 void LTPushFront(LTNode* phead, LTDataType x)
 {
 	assert(phead);
-	/*LTNode* newnode = BuyListNode(x);
+	LTNode* newnode = BuyListNode(x);
 	newnode->next = phead->next;
 	phead->next->prev = newnode;
 	phead->next = newnode;
-	newnode->prev = phead;*/
-	LTInsert(phead->next, x);
-
+	newnode->prev = phead;
+	//LTInsert(phead->next, x);
 }
 
 void LTPopFront(LTNode* phead)
 {
 	assert(phead);
 	assert(phead->next != phead);
-	/*LTNode* first = phead->next;
+	LTNode* first = phead->next;
 	LTNode* second = first->next;
 	free(first);
 	phead->next = second;
-	second->prev = phead;*/
-	LTErase(phead->next);
+	second->prev = phead;
+	//LTErase(phead->next);
 }
 
 LTNode* LTFind(LTNode* phead, LTDataType x)

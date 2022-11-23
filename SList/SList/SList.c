@@ -186,5 +186,5 @@ void SLTDestroy(SLTNode** pphead)
 		free(cur);
 		cur = next;
 	}
-	free(*pphead);
+	*pphead = NULL;
 }
