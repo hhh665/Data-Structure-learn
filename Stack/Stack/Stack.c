@@ -26,7 +26,7 @@ void StackDestroy(ST* ps)
 void StackPush(ST* ps, StackDataType x)
 {
 	assert(ps);
-	if (ps->capacity = ps->top)
+	if (ps->capacity == ps->top)
 	{
 		StackDataType* tmp = realloc(ps->a, 2 * ps->capacity * sizeof(StackDataType));
 		if (tmp == NULL)
@@ -66,3 +66,4 @@ int StackSize(ST* ps)
 	assert(ps);
 	return ps->top;
 }
+

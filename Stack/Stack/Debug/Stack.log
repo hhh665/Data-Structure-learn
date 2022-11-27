@@ -1,2 +1,5 @@
 ﻿  test.c
+D:\编程学习\data-structure\Stack\Stack\test.c(16,3): warning C4033: “myQueueCreate”必须返回值
+D:\编程学习\data-structure\Stack\Stack\test.c(31,13): warning C4013: “myQueuePeek”未定义；假设外部返回 int
+D:\编程学习\data-structure\Stack\Stack\test.c(21): warning C4715: “myQueueCreate”: 不是所有的控件路径都返回值
   Stack.vcxproj -> D:\编程学习\data-structure\Stack\Debug\Stack.exe

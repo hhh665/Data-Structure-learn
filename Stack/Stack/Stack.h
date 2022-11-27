@@ -26,3 +26,4 @@ StackDataType StackTop(ST* ps);
 bool StackEmpty(ST* ps);
 
 int StackSize(ST* ps);
+
