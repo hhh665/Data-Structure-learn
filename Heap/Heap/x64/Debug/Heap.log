@@ -1,0 +1,16 @@
+﻿  Heap.c
+D:\编程学习\data-structure\Heap\Heap\Heap.c(38,11): warning C4047: “=”:“HPDataType”与“HPDataType *”的间接级别不同
+D:\编程学习\data-structure\Heap\Heap\Heap.c(36,1): warning C4047: “初始化”:“HPDataType *”与“HPDataType”的间接级别不同
+D:\编程学习\data-structure\Heap\Heap\Heap.c(64,61): warning C4047: “函数”:“size_t”与“int *”的间接级别不同
+D:\编程学习\data-structure\Heap\Heap\Heap.c(64,50): warning C4024: “realloc”: 形参和实参 2 的类型不同
+D:\编程学习\data-structure\Heap\Heap\Heap.c(71,30): warning C4047: “=”:“int”与“int *”的间接级别不同
+D:\编程学习\data-structure\Heap\Heap\Heap.c(63,1): warning C4047: “初始化”:“int *”与“int”的间接级别不同
+  test.c
+D:\编程学习\data-structure\Heap\Heap\test.c(9,14): warning C4047: “函数”:“HP *”与“HP **”的间接级别不同
+D:\编程学习\data-structure\Heap\Heap\test.c(9,11): warning C4024: “HeapInit”: 形参和实参 1 的类型不同
+D:\编程学习\data-structure\Heap\Heap\test.c(12,16): warning C4047: “函数”:“HP *”与“HP **”的间接级别不同
+D:\编程学习\data-structure\Heap\Heap\test.c(12,12): warning C4024: “HeapPush”: 形参和实参 1 的类型不同
+D:\编程学习\data-structure\Heap\Heap\test.c(14,15): warning C4047: “函数”:“HP *”与“HP **”的间接级别不同
+D:\编程学习\data-structure\Heap\Heap\test.c(14,12): warning C4024: “HeapPrint”: 形参和实参 1 的类型不同
+  正在生成代码...
+  Heap.vcxproj -> D:\编程学习\data-structure\Heap\x64\Debug\Heap.exe
