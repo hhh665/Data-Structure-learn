@@ -5,13 +5,17 @@
 int main()
 {
 	int array[] = { 27,15,19,18,28,34,65,49,25,37 };
-	HP hp;
-	HeapInit(&hp);
-	for (int i = 0; i < sizeof(array)/sizeof(array[0]); i++)
+	HeapSort(array, sizeof(array) / sizeof(array[0]));
+
+	//HP hp;
+	//PrintTopK(array, sizeof(array) / sizeof(array[0]), 5);
+	/*for (int i = 0; i < sizeof(array)/sizeof(array[0]); i++)
 	{
 		HeapPush(&hp ,array[i]);
 	}
 	HeapPrint(&hp);
-	HeapDestroy(&hp);
+	HeapPop(&hp);
+	HeapPrint(&hp);
+	HeapDestroy(&hp);*/
 	return 0;
 }

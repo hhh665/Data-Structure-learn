@@ -1,2 +1,4 @@
-﻿  test.c
+﻿  Heap.c
+D:\编程学习\data-structure\Heap\Heap\Heap.c(9,11): warning C4047: “=”:“HPDataType”与“HPDataType *”的间接级别不同
+D:\编程学习\data-structure\Heap\Heap\Heap.c(7,1): warning C4047: “初始化”:“HPDataType *”与“HPDataType”的间接级别不同
   Heap.vcxproj -> D:\编程学习\data-structure\Heap\Debug\Heap.exe
