@@ -5,12 +5,20 @@
 #include <assert.h>
 #include <stdbool.h>
 
+//typedef int StackDataType;
+//#define N 10
+//typedef struct Stack
+//{
+//	StackDataType* a;
+//	int top;  // Õ»¶¥
+//}ST;
+
 typedef int StackDataType;
 typedef struct Stack
 {
 	StackDataType* a;
-	int capacity;
-	int top;
+	int capacity;  // ÈÝÁ¿
+	int top;       // Õ»¶¥
 }ST;
 
 void StackInit(ST* ps);

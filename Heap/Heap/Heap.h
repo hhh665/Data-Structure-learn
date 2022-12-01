@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <string.h>
+#include <time.h>
 
 typedef int HPDataType;
 typedef struct Heap
@@ -13,6 +14,8 @@ typedef struct Heap
 	int size;
 	int capacity;
 }HP;
+
+void AdjustDown(HPDataType* a, int n, int parent);
 
 void HeapCreat(HP* php, HPDataType* a, int n);
 
