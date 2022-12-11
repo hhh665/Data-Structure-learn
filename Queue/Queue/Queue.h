@@ -6,12 +6,14 @@
 #include <stdbool.h>
 
 typedef int QDataType;
+//链式结构：表示队列
 typedef struct QueueNode
 {
 	QDataType data;
 	struct QueueNode* next;
 }QNode;
 
+//队列的结构
 typedef struct Queue
 {
 	QNode* head;
@@ -33,4 +35,4 @@ QDataType QueueBack(Queue* pq);
 
 bool QueueEmpty(Queue* pq);
 
-int QueueSize(Queue* pq);
+int QueueSize(Queue* pq); 
