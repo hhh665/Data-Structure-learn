@@ -1,6 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef int BTDataType;
 typedef struct BinaryTreeNode
@@ -10,6 +11,8 @@ typedef struct BinaryTreeNode
 	struct BinaryTreeNode* right;
 }BTNode;
 
+BTNode* BinaryTreeCreate(BTDataType* a, int n, int* pi);
+bool isUnivalTree(BTNode* root);
 void PrevOrder(BTNode* root);
 
 void InOrder(BTNode* root);
@@ -23,5 +26,7 @@ int TreeLeafSize(BTNode* root);
 int TreeHeight(BTNode* root);
 
 int TreeKLevelSize(BTNode* root, int k);
+
+BTNode* TreeFind(BTNode* root, BTDataType x);
 
 BTNode* BuyBTNode(BTDataType x);

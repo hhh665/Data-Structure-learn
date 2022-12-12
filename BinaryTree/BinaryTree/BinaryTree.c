@@ -14,6 +14,36 @@ BTNode* BuyBTNode(BTDataType x)
 	return node;
 }
 
+//BTNode* BinaryTreeCreate(BTDataType* a, int n, int* pi)
+//{
+//	BTNode* node = BuyBTNode(*a);
+//	node->left = BinaryTreeCreate(*(a+1),n--,  )
+//}
+
+bool isUnivalTree(BTNode* root) 
+{
+	if (root->left == NULL && root->right == NULL)
+	{
+		return true;
+	}
+	else if (root->left == NULL && root->right)
+	{
+		if (root->data == root->right->data)
+			return true && isUnivalTree(root->right);
+	}
+	else if (root->left && root->right == NULL)
+	{
+		if (root->data == root->left->data)
+			return true && isUnivalTree(root->left);
+	}
+	else if (root->left && root->right)
+	{
+		if (root->data == root->left->data && root->data == root->right->data)
+			return true && (isUnivalTree(root->left) && isUnivalTree(root->right));
+	}
+	return false;
+}
+
 void PrevOrder(BTNode* root)
 {
 	if (root == NULL)
@@ -96,3 +126,27 @@ int TreeKLevelSize(BTNode* root, int k)
 	return TreeKLevelSize(root->left, k - 1)
 		 + TreeKLevelSize(root->right, k - 1);
 }
+
+BTNode* TreeFind(BTNode* root, BTDataType x)
+{
+	if (root == NULL)
+	{
+		return NULL;
+	}
+	if (root->data == x)
+	{
+		return root;
+	}
+	BTNode* ret1 = TreeFind(root->left, x);
+	if (ret1)
+	{
+		return ret1;
+	}
+	BTNode* ret2 = TreeFind(root->left, x);
+	if (ret2)
+	{
+		return ret2;
+	}
+	return NULL;
+}
+
