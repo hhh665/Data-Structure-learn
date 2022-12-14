@@ -173,23 +173,30 @@ void LevelOrder(BTNode* root)
 {
 	Queue pq;
 	QueueInit(&pq);
+	int levelsize = 0;
 	if (root)
 	{
 		QueuePush(&pq, root);
+		levelsize = 1;
 	}
 	while (!QueueEmpty(&pq))
 	{
-		BTNode* front = QueueFront(&pq);
-		printf("%c ", front->data);
-		QueuePop(&pq);
-		if (front->left)
+		while (levelsize--)
 		{
-			QueuePush(&pq, front->left);
+			BTNode* front = QueueFront(&pq);
+			printf("%c ", front->data);
+			QueuePop(&pq);
+			if (front->left)
+			{
+				QueuePush(&pq, front->left);
+			}
+			if (front->right)
+			{
+				QueuePush(&pq, front->right);
+			}
 		}
-		if (front->right)
-		{
-			QueuePush(&pq, front->right);
-		}
+		printf("\n");
+		levelsize = QueueSize(&pq);
 	}
 	printf("\n");
 	QueueDestroy(&pq);
