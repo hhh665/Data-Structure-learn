@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-typedef int BTDataType;
+typedef char BTDataType;
 typedef struct BinaryTreeNode
 {
 	BTDataType data;
@@ -12,7 +12,9 @@ typedef struct BinaryTreeNode
 }BTNode;
 
 BTNode* BinaryTreeCreate(BTDataType* a, int n, int* pi);
-bool isUnivalTree(BTNode* root);
+
+void BinaryTreeDestroy(BTNode* root);
+
 void PrevOrder(BTNode* root);
 
 void InOrder(BTNode* root);
@@ -30,3 +32,7 @@ int TreeKLevelSize(BTNode* root, int k);
 BTNode* TreeFind(BTNode* root, BTDataType x);
 
 BTNode* BuyBTNode(BTDataType x);
+
+void LevelOrder(BTNode* root);
+
+bool BinaryTreeComplete(BTNode* root);

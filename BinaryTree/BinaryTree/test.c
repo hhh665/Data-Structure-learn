@@ -32,33 +32,39 @@
 //	printf("%d\n", n);
 //	return 0;
 //}
-bool isSameTree(BTNode* p, BTNode* q) {
-    if (p == NULL && q == NULL)
-    {
-        return true;
-    }
-    else if (p == NULL && q)
-    {
-        return false;
-    }
-    else if (p && q == NULL)
-    {
-        return false;
-    }
-    else if (p && q)
-    {
-        if (p->data == q->data)
-            return true && isSameTree(p->left, q->right) && isSameTree(p->right, q->left);
-    }
-    return false;
-}
+//bool isSameTree(BTNode* p, BTNode* q) {
+//    if (p == NULL && q == NULL)
+//    {
+//        return true;
+//    }
+//    else if (p == NULL && q)
+//    {
+//        return false;
+//    }
+//    else if (p && q == NULL)
+//    {
+//        return false;
+//    }
+//    else if (p && q)
+//    {
+//        if (p->data == q->data)
+//            return true && isSameTree(p->left, q->right) && isSameTree(p->right, q->left);
+//    }
+//    return false;
+//}
 int main()
 {
-	BTNode* n1 = BuyBTNode(1);
+	/*BTNode* n1 = BuyBTNode(1);
 	BTNode* n2 = BuyBTNode(2);
 	BTNode* n3 = BuyBTNode(3);
 	n1->left = n2;
 	n1->right = n3;
 	bool ret = isSameTree(n1,n1);
-	return 0;
+	return 0;*/
+	char arr[20] = "123##4#5###";
+	int n = 20;
+	int i = 0;
+	BTNode* root = BinaryTreeCreate(arr, n, &i);
+	LevelOrder(root);
+	bool ret = BinaryTreeComplete(root);
 }

@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-#include "BinaryTree.h"
 
+#include "BinaryTree.h"
+#include "Queue.h"
 BTNode* BuyBTNode(BTDataType x)
 {
 	BTNode* node = (BTNode*)malloc(sizeof(BTNode));
@@ -14,35 +15,53 @@ BTNode* BuyBTNode(BTDataType x)
 	return node;
 }
 
-//BTNode* BinaryTreeCreate(BTDataType* a, int n, int* pi)
-//{
-//	BTNode* node = BuyBTNode(*a);
-//	node->left = BinaryTreeCreate(*(a+1),n--,  )
-//}
-
-bool isUnivalTree(BTNode* root) 
+BTNode* BinaryTreeCreate(BTDataType* a, int n, int* pi)
 {
-	if (root->left == NULL && root->right == NULL)
+	if (a[*pi] == '#')
 	{
-		return true;
+		(*pi)++;
+		return NULL;
 	}
-	else if (root->left == NULL && root->right)
-	{
-		if (root->data == root->right->data)
-			return true && isUnivalTree(root->right);
-	}
-	else if (root->left && root->right == NULL)
-	{
-		if (root->data == root->left->data)
-			return true && isUnivalTree(root->left);
-	}
-	else if (root->left && root->right)
-	{
-		if (root->data == root->left->data && root->data == root->right->data)
-			return true && (isUnivalTree(root->left) && isUnivalTree(root->right));
-	}
-	return false;
+	BTNode* node = BuyBTNode(a[(*pi)++]);
+	node->left = BinaryTreeCreate(a, n, pi);
+	node->right = BinaryTreeCreate(a, n, pi);
+	return node;
 }
+
+void BinaryTreeDestroy(BTNode* root)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+	BinaryTreeDestroy(root->left);
+	BinaryTreeDestroy(root->right);
+	free(root);
+}
+
+//bool isUnivalTree(BTNode* root) 
+//{
+//	if (root->left == NULL && root->right == NULL)
+//	{
+//		return true;
+//	}
+//	else if (root->left == NULL && root->right)
+//	{
+//		if (root->data == root->right->data)
+//			return true && isUnivalTree(root->right);
+//	}
+//	else if (root->left && root->right == NULL)
+//	{
+//		if (root->data == root->left->data)
+//			return true && isUnivalTree(root->left);
+//	}
+//	else if (root->left && root->right)
+//	{
+//		if (root->data == root->left->data && root->data == root->right->data)
+//			return true && (isUnivalTree(root->left) && isUnivalTree(root->right));
+//	}
+//	return false;
+//}
 
 void PrevOrder(BTNode* root)
 {
@@ -150,3 +169,64 @@ BTNode* TreeFind(BTNode* root, BTDataType x)
 	return NULL;
 }
 
+void LevelOrder(BTNode* root)
+{
+	Queue pq;
+	QueueInit(&pq);
+	if (root)
+	{
+		QueuePush(&pq, root);
+	}
+	while (!QueueEmpty(&pq))
+	{
+		BTNode* front = QueueFront(&pq);
+		printf("%c ", front->data);
+		QueuePop(&pq);
+		if (front->left)
+		{
+			QueuePush(&pq, front->left);
+		}
+		if (front->right)
+		{
+			QueuePush(&pq, front->right);
+		}
+	}
+	printf("\n");
+	QueueDestroy(&pq);
+}
+
+bool BinaryTreeComplete(BTNode* root)
+{
+	Queue pq;
+	QueueInit(&pq);
+	if (root)
+	{
+		QueuePush(&pq, root);
+	}
+	while (!QueueEmpty(&pq))
+	{
+		BTNode* front = QueueFront(&pq);
+		QueuePop(&pq);
+		if (front == NULL)
+		{
+			break;
+		}
+		else
+		{
+			QueuePush(&pq, front->left);
+			QueuePush(&pq, front->right);
+		}
+	}
+	while (!QueueEmpty(&pq))
+	{
+		BTNode* front = QueueFront(&pq);
+		QueuePop(&pq);
+		if (front != NULL)
+		{
+			QueueDestroy(&pq);
+			return false;
+		}
+	}
+	QueueDestroy(&pq);
+	return true;
+}
