@@ -2,9 +2,19 @@
 
 #include "Sort.h"
 
+void PrintArray(int* a)
+{
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d ", a[i]);
+	}
+	printf("\n");
+}
+
 int main()
 {
-	int a[10] = { 1,3,5,7,9,4,5,2,1,3 };
-	InsertSort(a, 10);
+	int a[10] = { 9,8,7,6,5,4,3,2,1,0 };
+	SelectSort(a, 10);
+	PrintArray(a);
 	return 0;
 }
