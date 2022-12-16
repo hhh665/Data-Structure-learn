@@ -87,3 +87,23 @@ void SelectSort(int* a, int n)
 		end--;
 	}
 }
+
+void BubbleSort(int* a, int n)
+{
+	for (int i = 0; i < n - 1; i++)
+	{
+		int exchange = 0;
+		for (int j = 0; j < n - 1 - i; j++)
+		{
+			if (a[j] > a[j + 1])
+			{
+				Swap(&a[j], &a[j + 1]);
+			}
+			exchange = 1;
+		}
+		if (exchange == 0)
+		{
+			break;
+		}
+	}
+}

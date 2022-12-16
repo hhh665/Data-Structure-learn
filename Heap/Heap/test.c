@@ -66,13 +66,14 @@ void TestTopk()
 
 int main()
 {
-	//TestTopk();
-	int array[] = { 27,15,19,18,28,34,65,49,25,37 };
-	HeapSort(array, sizeof(array) / sizeof(array[0]));
-	for (int i = 0; i < sizeof(array) / sizeof(array[0]); ++i)
+	TestTopk();
+	//int array[] = { 27,15,19,18,28,34,65,49,25,37 };
+	//PrintTopK(array, 10, 5);
+	//HeapSort(array, sizeof(array) / sizeof(array[0]));
+	/*for (int i = 0; i < sizeof(array) / sizeof(array[0]); ++i)
 	{
 		printf("%d ", array[i]);
-	}
+	}*/
 	//HP hp;
 	//PrintTopK(array, sizeof(array) / sizeof(array[0]), 3);
 	/*for (int i = 0; i < sizeof(array)/sizeof(array[0]); i++)

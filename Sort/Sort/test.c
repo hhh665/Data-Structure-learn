@@ -14,7 +14,7 @@ void PrintArray(int* a)
 int main()
 {
 	int a[10] = { 9,8,7,6,5,4,3,2,1,0 };
-	SelectSort(a, 10);
+	BubbleSort(a, 10);
 	PrintArray(a);
 	return 0;
 }

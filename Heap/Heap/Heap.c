@@ -151,7 +151,7 @@ void PrintTopK(int* a, int n, int k)
 	HeapCreat(&hp, a, k);
 	for (int i = n - 1; i > k - 1; --i)
 	{
-		if (hp.a[0] < a[i])
+		if (hp.a[0] > a[i])
 		{
 			Swap(&(hp.a[0]), &a[i]);
 			AdjustDown((&hp)->a, k, 0);
@@ -169,7 +169,6 @@ void HeapSort(int* a, int n)
 	{
 		AdjustDown(a, n, i);
 	}
-
 	int end = n - 1;
 	while (end > 0)
 	{
