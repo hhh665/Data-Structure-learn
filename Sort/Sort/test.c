@@ -13,8 +13,8 @@ void PrintArray(int* a)
 
 int main()
 {
-	int a[10] = { 9,8,7,6,5,4,3,2,1,0 };
-	BubbleSort(a, 10);
+	int a[10] = { 6,5,1,2,7,8,4,3,0,9 };
+	QuickSort(a, 0, 9);
 	PrintArray(a);
 	return 0;
 }
