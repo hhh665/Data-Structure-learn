@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1\
 
 #include "Sort.h"
+#include "Stack.h"
 
 void InsertSort(int* a, int n)
 {
@@ -143,38 +144,160 @@ int GetMidIndex(int* a, int begin, int end)
 	}
 }
 
+//void QuickSort(int* a, int begin, int end)
+//{
+//	if (begin >= end)
+//	{
+//		return;
+//	}
+//	if ((end - begin + 1) < 15)
+//	{
+//		InsertSort(a + begin, end - begin + 1);
+//	}
+//	else
+//	{
+//		int mid = GetMidIndex(a, begin, end);
+//		Swap(&a[begin], &a[mid]);
+//		int left = begin;
+//		int right = end;
+//		int key = left;
+//		while (left < right)
+//		{
+//			while (left < right && a[right] >= a[key])
+//			{
+//				right--;
+//			}
+//			while (left < right && a[left] <= a[key])
+//			{
+//				left++;
+//			}
+//			Swap(&a[left], &a[right]);
+//		}
+//		Swap(&a[key], &a[left]);
+//		key = left;
+//		QuickSort(a, begin, key - 1);
+//		QuickSort(a, key + 1, end);
+//	}
+//}
+
+//Hoare
+int PartSort1(int* a, int begin, int end)
+{
+	int mid = GetMidIndex(a, begin, end);
+	Swap(&a[begin], &a[mid]);
+	int left = begin;
+	int right = end;
+	int key = left;
+	while (left < right)
+	{
+		while (a[right] >= a[key] && left < right)
+		{
+			right--;
+		}
+		while (a[left] <= a[key] && left < right)
+		{
+			left++;
+		}
+		Swap(&a[left], &a[right]);
+	}
+	Swap(&a[key], &a[left]);
+	key = left;
+	return key;
+}
+
+//ÍÚ¿Ó
+int PartSort2(int* a, int begin, int end)
+{
+	int mid = GetMidIndex(a, begin, end);
+	Swap(&a[begin], &a[mid]);
+	int left = begin;
+	int right = end;
+	int key = a[left];
+	int hole = left;
+	while (left < right)
+	{
+		while (a[right] >= key && left < right)
+		{
+			right--;
+		}
+		a[hole] = a[right];
+		hole = right;
+		while (a[left] <= key && left < right)
+		{
+			left++;
+		}
+		a[hole] = a[left];
+		hole = left;
+	}
+	a[hole] = key;
+	return hole;
+}
+
+int PartSort3(int* a, int begin, int end)
+{
+	int mid = GetMidIndex(a, begin, end);
+	Swap(&a[mid], &a[begin]);
+	int key = begin;
+	int prev = begin;
+	int cur = begin + 1;
+	while (cur <= end)
+	{
+		if (a[cur] < a[key] && ++prev != cur)
+		{
+			Swap(&a[cur], &a[prev]);
+		}
+		++cur;
+	}
+	Swap(&a[key], &a[prev]);
+	key = prev;
+	return key;
+}
+
 void QuickSort(int* a, int begin, int end)
 {
 	if (begin >= end)
 	{
 		return;
 	}
-	if ((end - begin + 1) < 15)
-	{
-		InsertSort(a + begin, end - begin + 1);
-	}
+	//if ((end - begin + 1) < 15)
+	//{
+	//	InsertSort(a + begin, end - begin + 1);
+	//}
 	else
 	{
-		int mid = GetMidIndex(a, begin, end);
-		Swap(&a[begin], &a[mid]);
-		int left = begin;
-		int right = end;
-		int key = left;
-		while (left < right)
-		{
-			while (left < right && a[right] >= a[key])
-			{
-				right--;
-			}
-			while (left < right && a[left] <= a[key])
-			{
-				left++;
-			}
-			Swap(&a[left], &a[right]);
-		}
-		Swap(&a[key], &a[left]);
-		key = left;
+		int key = PartSort2(a, begin, end);
 		QuickSort(a, begin, key - 1);
 		QuickSort(a, key + 1, end);
 	}
+}
+
+void QuickSortNonR(int* a, int begin, int end)
+{
+	ST st;
+	StackInit(&st);
+	StackPush(&st, begin);
+	StackPush(&st, end);
+	while (!StackEmpty(&st))
+	{
+		int right = StackTop(&st);
+		StackPop(&st);
+		int left = StackTop(&st);
+		StackPop(&st);
+		int key = PartSort3(a, left, right);
+		if (key + 1 < right)
+		{
+			StackPush(&st, key + 1);
+			StackPush(&st, right);
+		}
+		if (key - 1 > left)
+		{
+			StackPush(&st, left);
+			StackPush(&st, key - 1);
+		}
+	}
+}
+
+void Sort(int* a, int begin, int end)
+{
+	int mid
 }
