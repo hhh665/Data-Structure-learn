@@ -14,7 +14,7 @@ void PrintArray(int* a)
 int main()
 {
 	int a[10] = { 6,5,1,2,7,8,4,3,0,9 };
-	QuickSortNonR(a, 0, 9);
+	MergeSort(a, 10);
 	PrintArray(a);
 	return 0;
 }
