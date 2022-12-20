@@ -89,6 +89,43 @@ void SelectSort(int* a, int n)
 	}
 }
 
+void AdjustDown(int* a, int n, int parent)
+{
+	int child = parent * 2 + 1;
+	while (child < n)
+	{
+		if (child + 1 < n && a[child + 1] > a[child])
+		{
+			child++;
+		}
+		if (a[child] > a[parent])
+		{
+			Swap(&a[parent], &a[child]);
+			parent = child;
+			child = parent * 2 + 1;
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+
+void HeapSort(int* a, int n)
+{
+	for (int i = (n - 1 - 1) / 2; i >= 0; --i)
+	{
+		AdjustDown(a, n, i);
+	}
+	int end = n - 1;
+	while (end > 0)
+	{
+		Swap(&a[0], &a[end]);
+		AdjustDown(a, end, 0);
+		--end;
+	}
+}
+
 void BubbleSort(int* a, int n)
 {
 	for (int i = 0; i < n - 1; i++)
@@ -342,4 +379,158 @@ void MergeSort(int* a, int n)
 	_MergeSort(a, 0, n - 1, tmp);
 	free(tmp);
 	tmp = NULL;
+}
+
+//void MergeSortNonR(int* a, int n)
+//{
+//	int* tmp = (int*)malloc(sizeof(int) * n);
+//	if (tmp == NULL)
+//	{
+//		perror("malloc fail");
+//		exit(-1);
+//	}
+//	int range = 1;
+//	while (range < n)
+//	{
+//		for (int i = 0; i < n; i += range * 2)
+//		{
+//			int begin1 = i, end1 = i + range - 1;
+//			int begin2 = i + range, end2 = i + range * 2 - 1;
+//			int j = i;
+//			if (end1 >= n)
+//			{
+//				break;
+//			}
+//			else if (begin2 >= n)
+//			{
+//				break;
+//			}
+//			else if (end2 >= n)
+//			{
+//				end2 = n - 1;
+//			}
+//			while (begin1 <= end1 && begin2 <= end2)
+//			{
+//				if (a[begin1] <= a[begin2])
+//				{
+//					tmp[j++] = a[begin1++];
+//				}
+//				else
+//				{
+//					tmp[j++] = a[begin2++];
+//				}
+//			}
+//			while (begin1 <= end1)
+//			{
+//				tmp[j++] = a[begin1++];
+//			}
+//			while (begin2 <= end2)
+//			{
+//				tmp[j++] = a[begin2++];
+//			}
+//			memcpy(a + i, tmp + i, sizeof(int) * (end2 - i + 1));
+//		}
+//		range *= 2;
+//	}
+//	free(tmp);
+//	tmp = NULL;
+//}
+
+void MergeSortNonR(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	if (tmp == NULL)
+	{
+		perror("malloc fail");
+		exit(-1);
+	}
+	int range = 1;
+	while (range < n)
+	{
+		for (int i = 0; i < n; i += range * 2)
+		{
+			int begin1 = i, end1 = i + range - 1;
+			int begin2 = i + range, end2 = i + range * 2 - 1;
+			int j = i;
+			if (end1 >= n)
+			{
+				end1 = n - 1;
+				begin2 = n;
+				end2 = n - 1;
+			}
+			else if (begin2 >= n)
+			{
+				begin2 = n;
+				end2 = n - 1;
+			}
+			else if (end2 >= n)
+			{
+				end2 = n - 1;
+			}
+			while (begin1 <= end1 && begin2 <= end2)
+			{
+				if (a[begin1] <= a[begin2])
+				{
+					tmp[j++] = a[begin1++];
+				}
+				else
+				{
+					tmp[j++] = a[begin2++];
+				}
+			}
+			while (begin1 <= end1)
+			{
+				tmp[j++] = a[begin1++];
+			}
+			while (begin2 <= end2)
+			{
+				tmp[j++] = a[begin2++];
+			}
+		}
+		memcpy(a, tmp, sizeof(int) * n);
+		range *= 2;
+	}
+	free(tmp);
+	tmp = NULL;
+}
+
+void QuickSort1(int* a, int begin, int end)
+{
+	if (begin >= end)
+	{
+		return;
+	}
+	if ((end - begin + 1) < 15)
+	{
+		InsertSort(a + begin, end - begin + 1);
+	}
+	else
+	{
+		int mid = GetMidIndex(a, begin, end);
+		Swap(&a[mid], &a[begin]);
+		int left = begin;
+		int cur = begin + 1;
+		int right = end;
+		int key = a[begin];
+		while (cur <= right)
+		{
+			if (a[cur] < key)
+			{
+				Swap(&a[cur], &a[left]);
+				cur++;
+				left++;
+			}
+			else if (a[cur] > key)
+			{
+				Swap(&a[cur], &a[right]);
+				right--;
+			}
+			else
+			{
+				cur++;
+			}
+		}
+		QuickSort1(a, begin, left - 1);
+		QuickSort1(a, right + 1, end);
+	}
 }

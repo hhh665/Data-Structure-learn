@@ -17,3 +17,7 @@ void SelectSort(int* a, int n);
 void BubbleSort(int* a, int n);
 
 void QuickSort(int* a, int n);
+
+void MergeSort(int* a, int n);
+
+void MergeSortNonR(int* a, int n);
