@@ -1,0 +1,5 @@
+﻿  test.c
+D:\编程学习\data-structure\test_12_27\test_12_27\test.c(12,5): warning C4047: “函数”:“int **”与“int [3][4]”的间接级别不同
+D:\编程学习\data-structure\test_12_27\test_12_27\test.c(12,4): warning C4024: “f”: 形参和实参 1 的类型不同
+D:\编程学习\data-structure\test_12_27\test_12_27\test.c(5): warning C4716: “f”: 必须返回一个值
+  test_12_27.vcxproj -> D:\编程学习\data-structure\test_12_27\Debug\test_12_27.exe
