@@ -136,8 +136,8 @@ void BubbleSort(int* a, int n)
 			if (a[j] > a[j + 1])
 			{
 				Swap(&a[j], &a[j + 1]);
+				exchange = 1;
 			}
-			exchange = 1;
 		}
 		if (exchange == 0)
 		{
@@ -302,7 +302,7 @@ void QuickSort(int* a, int begin, int end)
 	//}
 	else
 	{
-		int key = PartSort2(a, begin, end);
+		int key = PartSort3(a, begin, end);
 		QuickSort(a, begin, key - 1);
 		QuickSort(a, key + 1, end);
 	}
