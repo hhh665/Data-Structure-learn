@@ -39,6 +39,6 @@ void PrintArray(int* a, int n)
 int main()
 {
 	int a[10] = { 9,5,8,7,6,4,2,3,1,0 };
-	MergeSort(a, 10);
+	MergeSortNonR(a, 10);
 	PrintArray(a, 10);
 }

@@ -2,6 +2,7 @@
 
 #include "Sort.h"
 #include "Stack.h"
+#include "Queue.h"
 
 void InsertSort(int* a, int n)
 {
@@ -270,6 +271,7 @@ int PartSort2(int* a, int begin, int end)
 	return hole;
 }
 
+//Ë«Ö¸Õë
 int PartSort3(int* a, int begin, int end)
 {
 	int mid = GetMidIndex(a, begin, end);
@@ -296,10 +298,10 @@ void QuickSort(int* a, int begin, int end)
 	{
 		return;
 	}
-	//if ((end - begin + 1) < 15)
-	//{
-	//	InsertSort(a + begin, end - begin + 1);
-	//}
+	if ((end - begin + 1) < 15)
+	{
+		InsertSort(a + begin, end - begin + 1);
+	}
 	else
 	{
 		int key = PartSort3(a, begin, end);
@@ -532,5 +534,57 @@ void QuickSort1(int* a, int begin, int end)
 		}
 		QuickSort1(a, begin, left - 1);
 		QuickSort1(a, right + 1, end);
+	}
+}
+
+#define K 3
+#define RADIX 10
+Queue Q[RADIX];
+
+int GetKey(int value, int k)
+{
+	int key = 0;
+	while (k >= 0)
+	{
+		key = value % 10;
+		value /= 10;
+		k--;
+	}
+	return key;
+}
+
+
+void Distribute(int* a, int n, int k)
+{
+	for (int i = 0; i < n; i++)
+	{
+		int key = GetKey(a[i], k);
+		QueuePush(&Q[key], a[i]);
+	}
+}
+
+void Collect(int* a)
+{
+	int k = 0;
+	for (int i = 0; i < RADIX; i++)
+	{
+		while (!QueueEmpty(&Q[i]))
+		{
+			a[k++] = QueueFront(&Q[i]);
+			QueuePop(&Q[i]);
+		}
+	}
+}
+
+void RadixSort(int* a, int n)
+{
+	for (int i = 0; i < RADIX; i++)
+	{
+		QueueInit(&Q[i]);
+	}
+	for (int i = 0; i < K; i++)
+	{
+		Distribute(a, n, i);
+		Collect(a);
 	}
 }

@@ -405,6 +405,49 @@ void MergeSortNonR(int* a, int n)
 	int range = 1;
 	while (range < n)
 	{
-
+		for (int i = 0; i < n; i += range * 2)
+		{
+			int begin1 = i, end1 = i + range - 1;
+			int begin2 = i + range, end2 = i + range * 2 - 1;
+			int j = i;
+			if (end1 >= n)
+			{
+				end1 = n - 1;
+				begin2 = n;
+				end2 = n - 1;
+			}
+			else if (begin2 >= n)
+			{
+				begin2 = n;
+				end2 = n - 1;
+			}
+			else if (end2 >= n)
+			{
+				end2 = n - 1;
+			}
+			while (begin1 <= end1 && begin2 <= end2)
+			{
+				if (a[begin1] < a[begin2])
+				{
+					tmp[j++] = a[begin1++];
+				}
+				else
+				{
+					tmp[j++] = a[begin2++];
+				}
+			}
+			while (begin1 <= end1)
+			{
+				tmp[j++] = a[begin1++];
+			}
+			while (begin2 <= end2)
+			{
+				tmp[j++] = a[begin2++];
+			}
+		}
+		memcpy(a, tmp, sizeof(int) * n);
+		range *= 2;
 	}
+	free(tmp);
+	tmp = NULL;
 }

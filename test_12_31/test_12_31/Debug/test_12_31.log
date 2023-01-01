@@ -1,2 +1,5 @@
-﻿  test.c
+﻿  Sort.c
+  test.c
+D:\编程学习\data-structure\test_12_31\test_12_31\test.c(42,2): warning C4013: “MergeSortNonR”未定义；假设外部返回 int
+  正在生成代码...
   test_12_31.vcxproj -> D:\编程学习\data-structure\test_12_31\Debug\test_12_31.exe
