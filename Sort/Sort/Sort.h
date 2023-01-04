@@ -19,3 +19,5 @@ void MergeSort(int* a, int n);
 void MergeSortNonR(int* a, int n);
 
 void RadixSort(int* a, int n);
+
+void CountSort(int* a, int n);

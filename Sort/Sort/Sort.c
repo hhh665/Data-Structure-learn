@@ -588,3 +588,39 @@ void RadixSort(int* a, int n)
 		Collect(a);
 	}
 }
+
+void CountSort(int* a, int n)
+{
+	int max = a[0];
+	int min = a[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] > max)
+		{
+			max = a[i];
+		}
+		if (a[i] < min)
+		{
+			min = a[i];
+		}
+	}
+	int num = max - min + 1;
+	int* tmp = (int*)calloc(num, sizeof(int));
+	if (NULL == tmp)
+	{
+		perror("calloc fail");
+		exit(-1);
+	}
+	for (int i = 0; i < n; i++)
+	{
+		tmp[a[i]-min]++;
+	}
+	int k = 0;
+	for (int i = 0; i < num; i++)
+	{
+		while (tmp[i]--)
+		{
+			a[k++] = i + min;
+		}
+	}
+}

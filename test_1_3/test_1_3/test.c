@@ -26,7 +26,7 @@ void CountSort(int* a, int n)
 	}
 	for (int i = 0; i < n; i++)
 	{
-		tmp[a[i]]++;
+		tmp[a[i]-min]++;
 	}
 	int k = 0;
 	for (int i = 0; i < num; i++)
@@ -40,7 +40,7 @@ void CountSort(int* a, int n)
 
 int main()
 {
-	int a[] = { 9, 3, 5, 4, 9, 1, 2, 7, 8, 1, 3, 6, 5, 3, 4, 0, 10, 9, 7, 9 };
+	int a[] = { 9, 3, 5, 4, 9, 1, 2, 7, 8, 1, 3, 6, 5, 3, 4, 10, 9, 7, 9, -3 };
 	CountSort(a, sizeof(a) / sizeof(a[0]));
 	return 0;
 }

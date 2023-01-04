@@ -13,9 +13,9 @@ void PrintArray(int* a, int n)
 
 int main()
 {
-	int a[] = { 278,109,63,930,589,184,505,269,8,83 };
+	int a[] = { -3, -5, -3, 278,109,63,930,589,184,505,269,8,83 };
 	int n = sizeof(a) / sizeof(int);
-	RadixSort(a, n);
+	CountSort(a, n);
 	PrintArray(a,n);
 	return 0;
 }
